@@ -1,0 +1,91 @@
+<html>
+<body onkeypress="doKeyDown(event)">
+<h1>Depression Pong (whats the point of life???)</h1><h6>no matter how hard you try you will always fail</h6>
+<style>
+body{
+background:#000;
+color:#f00;
+}
+canvas{
+border:1px solid #f00;
+}
+</style>
+<script>
+// make the canvas
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext("2d");
+canvas.height = 600;
+canvas.width = 600;
+document.body.appendChild(canvas);
+
+
+var player = {
+speed:10,
+score:0,
+x:0,
+y:50
+};
+
+var ball = {
+xspeed: 2,
+yspeed: 1,
+x:300,
+y:300
+}
+
+function doKeyDown(event){
+keypress=window.event.key;
+if(keypress == "w"){
+player.y-=player.speed;
+}
+if(keypress == "s"){
+player.y+=player.speed;
+}
+}
+
+function update(){
+ball.x += ball.xspeed;
+ball.y += ball.yspeed;
+if(ball.x > 580 || ball.x < -100){
+ball.xspeed=-ball.xspeed;
+}
+
+if(ball.y > 580 || ball.y < 0){
+ball.yspeed=-ball.yspeed;
+}
+
+if(ball.x < 0){
+ball.x=300;
+ball.y=300;
+player.score+=1;
+}
+
+if(ball.x < 20 && ball.y > player.y && ball.y < player.y+80){
+ball.xspeed=-ball.xspeed;
+}
+
+graphics();
+}
+function graphics(){
+//paddle
+canvas.width=canvas.width;
+ctx.rect(player.x,player.y, 20, 80);
+ctx.rect(ball.x,ball.y,20,20);
+ctx.font = "48px Impact Condensed"
+ctx.fillStyle = "#f00";
+ctx.fillText(0,150,50);
+ctx.fillText(player.score,320,50);
+ctx.fill();
+
+}
+
+window.setInterval(function(){update()}, 5);
+
+</script>
+<img src="shadow.gif" height="600" width="600">
+<audio autoplay loop>
+  haha you have a piece of shit browser that doesnt have audio tag (just play crawling by linkin park in ur head i guess lmao @ ur life)
+  <source src="edge.ogg">
+</audio>
+</body>
+</html>
