@@ -1,5 +1,5 @@
 <html>
-<body onkeypress="doKeyDown(event)">
+<body>
 <h1>Depression Pong (whats the point of life???)</h1><h6>no matter how hard you try you will always fail</h6>
 <style>
 body{
@@ -33,17 +33,13 @@ x:300,
 y:300
 }
 
-function doKeyDown(event){
-keypress=window.event.key;
-if(keypress == "w"){
-player.y-=player.speed;
-}
-if(keypress == "s"){
-player.y+=player.speed;
-}
-}
-
 function update(){
+
+if(keys[87])
+	player.y -= player.speed;
+else if(keys[83])
+	player.y += player.speed;
+
 ball.x += ball.xspeed;
 ball.y += ball.yspeed;
 if(ball.x > 580 || ball.x < -100){
@@ -79,7 +75,17 @@ ctx.fill();
 
 }
 
+keys = [];
+
+document.addEventListener("keydown", function(event){
+	keys[event.keyCode] = true;
+});
+document.addEventListener("keyup", function(event){
+	keys[event.keyCode] = false
+});
+
 window.setInterval(function(){update()}, 5);
+
 
 </script>
 <img src="shadow.gif" height="600" width="600">
