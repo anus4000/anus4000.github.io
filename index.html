@@ -3,13 +3,57 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-</head>
-
-<body style="background-color:#000000;">
 
         <title>Anus4000</title>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="div.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+<!--
+var b_timer = null; // blink timer
+var b_on = true; // blink state
+var blnkrs = null; // array of spans
+
+function blink() {
+var tmp = document.getElementsByTagName("span");
+if (tmp) {
+blnkrs = new Array();
+var b_count = 0;
+for (var i = 0; i < tmp.length; ++i) {
+if (tmp[i].className == "blink") {
+blnkrs[b_count] = tmp[i];
+++b_count;
+}
+}
+// time in m.secs between blinks
+// 500 = 1/2 second
+blinkTimer(700);
+}
+}
+
+function blinkTimer(ival) {
+if (b_timer) {
+window.clearTimeout(b_timer);
+b_timer = null;
+}
+blinkIt();
+b_timer = window.setTimeout('blinkTimer(' + ival + ')', ival);
+}
+
+function blinkIt() {
+for (var i = 0; i < blnkrs.length; ++i) {
+if (b_on == true) {
+blnkrs[i].style.visibility = "hidden";
+}
+else {
+blnkrs[i].style.visibility = "visible";
+}
+}
+b_on =!b_on;
+}
+//-->
+</script>
+</head>
+<body background="./bg_main2.gif" onload="blink();>
     <div id="content" style="max-width:800px;overflow:auto" class="col-md-4">
             <center>
                 <font size="+7">
